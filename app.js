@@ -1,55 +1,73 @@
-// Object
+// function
 
-// const person = {
-//   name: "vi",
-//   age: 25,
-//   job: "fullstack",
-// };
+// function showPrimes(n) {
+//   nextPrime: for (let i = 2; i < n; i++) {
+//     for (let j = 2; j < i; j++) {
+//       if (i % j == 0) continue nextPrime;
+//     }
 
-// const op = new Proxy(person, {
-//   get(target, prop) {
-//     return target[prop];
-//   },
-// });
-
-// let browser = 'Edge';
-// switch (browser) {
-//   case "Edge":
-//     alert("You've got the Edge");
-//     break;
-//   case "Chrome":
-//   case "Firefox":
-//   case "Safari":
-//   case "Opera":
-//     alert("Okay we support these browsers too");
-//     break;
-//   default:
-//     alert("We hope that this page looks good");
+//     console.log(i); // простое
+//   }
 // }
 
-// let browser = "Chrome";
-// if (browser == "Edge") {
-//   alert("You've got the Edge");
-// } else if (
-//   browser == "Chrome" ||
-//   browser == "Firefox" ||
-//   browser == "Safari" ||
-//   browser == "Opera"
-// ) {
-//   alert("Okay we support these browsers too");
+// showPrimes(14);
+
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     // ...
+//     return confirm("Родители разрешили?");
+//   }
+// }
+
+// function pow(x, n) {
+//   let result = x;
+
+//   for (let i = 1; i < n; i++) {
+//     result *= x;
+//   }
+
+//   return result;
+// }
+
+// let x = prompt("x?", "");
+// let n = prompt("n?", "");
+
+// if (n < 1) {
+//   alert(`Степень ${n} не поддерживается, используйте натуральное число`);
 // } else {
-//   alert("We hope that this page looks good");
+//   alert(pow(x, n));
 // }
 
-const number = +prompt("Введите число между 0 и 3", "");
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
 
-switch (number) {
-  case 0:
-    alert("Вы ввели число 0");
-    break;
-  case 1:
-    alert("Вы в вели число 1");
-    break;
-  default:
-    alert("Вы ввели число 2, а может 3");
+function showOk() {
+  alert("Вы согласны.");
+}
+
+function showCancel() {
+  alert("Вы отменили выполнение.");
+}
+
+// использование: функции showOk, showCancel передаются в качестве аргументов ask
+ask("Вы согласны?", showOk, showCancel);
+
+function pow(x, n) {
+  let result = 1;
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+  return result;
+}
+
+let x = prompt("x?", ""),
+  n = prompt("n?", "");
+if (n <= 0) {
+  alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
+} else {
+  alert( pow(x, n) );
 }
