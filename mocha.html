@@ -23,13 +23,21 @@
   <body>
     <script>
       function pow(x, n) {
-        return 8;
-        /* Здесь будет реализация функции, пока пусто */
+        if (n < 0) return NaN;
+        if (Math.round(n) != n) return NaN;
+
+        let result = 1;
+
+        for (let i = 0; i < n; i++) {
+          result *= x;
+        }
+
+        return result;
       }
     </script>
 
     <!-- скрипт со спецификацией (describe, it...) -->
-    <script src="test.js"></script>
+    <script src="test copy.js"></script>
 
     <!-- элемент с id="mocha" будет содержать результаты тестов -->
     <div id="mocha"></div>
