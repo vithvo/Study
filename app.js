@@ -44,10 +44,44 @@
 // let str = arr.join(" - ");
 // console.log(str.toUpperCase());
 
+// let arr = [1, 2, 3, 4, 5];
 
-let arr = [1, 2, 3, 4, 5];
+// // убрано начальное значение (нет 0 в конце)
+// let result = arr.reduce((sum, current) => sum + current);
 
-// убрано начальное значение (нет 0 в конце)
-let result = arr.reduce((sum, current) => sum + current);
+// console.log(result); // 15
 
-console.log( result ); // 15
+// function copySorted(arr) {
+//   return arr.slice().sort();
+// }
+
+// let arr = ["HTML", "JavaScript", "CSS"];
+
+// let sorted = copySorted(arr);
+
+// console.log(sorted);
+// console.log(arr);
+
+function Calculator() {
+  this.methods = {
+    "-": (a, b) => a - b,
+    "+": (a, b) => a + b,
+  };
+
+  this.calculate = function (str) {
+    let split = str.split(" "),
+      a = +split[0],
+      op = split[1],
+      b = +split[2];
+
+    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+      return NaN;
+    }
+
+    return this.methods[op](a, b);
+  };
+
+  this.addMethod = function (name, func) {
+    this.methods[name] = func;
+  };
+}
