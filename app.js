@@ -1,87 +1,56 @@
-// ["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
-//   alert(`${item} имеет позицию ${index} в ${array}`);
-// });
-
-// let arr = [1, 2, 15];
-
-// arr.sort(compareNumeric);
-
-// alert(arr); // 1, 2, 15
-
-// let arr = [1, -2, 15, 2, 0, 8, -88];
-
-// compareNumeric = function (a, b) {
-//   if (a > b) return 1;
-//   if (a == b) return 0;
-//   if (a < b) return -1;
+// Itteration
+// let range = {
+//   from: 1,
+//   to: 5,
 // };
-// arr.sort(compareNumeric);
-// arr.sort(function (a, b) {
-//   console.log(a + " <> " + b);
-// });
 
-// console.log(arr);
+// // 1. вызов for..of сначала вызывает эту функцию
+// range[Symbol.iterator] = function () {
+//   // ...она возвращает объект итератора:
+//   // 2. Далее, for..of работает только с этим итератором, запрашивая у него новые значения
+//   return {
+//     current: this.from,
+//     last: this.to,
 
-// let arr = [1, 2, 4, 5, 77, 3, 45, -6, 15];
+//     // 3. next() вызывается на каждой итерации цикла for..of
+//     next() {
+//       // 4. он должен вернуть значение в виде объекта {done:.., value :...}
+//       if (this.current <= this.last) {
+//         return { done: false, value: this.current++ };
+//       } else {
+//         return { done: true };
+//       }
+//     },
+//   };
+// };
 
-// arr.sort((a, b) => a - b);
-
-// arr.sort(function (a, b) {
-//   console.log(a + " <> " + b);
-// });
-// console.log(arr.reverse()); // 1, 2, 15
-
-// let names = "Вася, Петя, Маша";
-
-// let arr = names.split(", ");
-
-// console.log(arr);
-
-// for (let name of arr) {
-//   console.log(`Сообщение получат: ${name}.`); // Сообщение получат: Вася (и другие имена)
+// // теперь работает!
+// for (let num of range) {
+//   alert(num); // 1, затем 2, 3, 4, 5
 // }
 
-// let str = arr.join(" - ");
-// console.log(str.toUpperCase());
+let str = "Hello";
 
-// let arr = [1, 2, 3, 4, 5];
+// делает то же самое, что и
+// for (let char of str) alert(char);
 
-// // убрано начальное значение (нет 0 в конце)
-// let result = arr.reduce((sum, current) => sum + current);
+let iterator = str[Symbol.iterator]();
 
-// console.log(result); // 15
+while (true) {
+  let result = iterator.next();
+  if (result.done) break;
+  console.log(result.value); // выводит символы один за другим
+}
 
-// function copySorted(arr) {
-//   return arr.slice().sort();
-// }
 
-// let arr = ["HTML", "JavaScript", "CSS"];
 
-// let sorted = copySorted(arr);
+let arrayLike = {
+  // есть индексы и свойство length => псевдомассив
+  0: "Hello",
+  1: "World",
+  length: 2,
+};
 
-// console.log(sorted);
-// console.log(arr);
-
-function Calculator() {
-  this.methods = {
-    "-": (a, b) => a - b,
-    "+": (a, b) => a + b,
-  };
-
-  this.calculate = function (str) {
-    let split = str.split(" "),
-      a = +split[0],
-      op = split[1],
-      b = +split[2];
-
-    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
-      return NaN;
-    }
-
-    return this.methods[op](a, b);
-  };
-
-  this.addMethod = function (name, func) {
-    this.methods[name] = func;
-  };
+// Ошибка (отсутствует Symbol.iterator)
+for (let item of arrayLike) {
 }
