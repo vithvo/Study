@@ -124,15 +124,52 @@
 // printFarmInventory(7, 11, 3);
 
 // добавитьНулей
-function zeroPad(number, width) {
-  var string = String(number);
-  while (string.length < width) string = "0" + string;
-  return string;
+// function zeroPad(number, width) {
+//   var string = String(number);
+//   while (string.length < width) string = "0" + string;
+//   return string;
+// }
+// // вывестиИнвентаризациюФермы
+// function printFarmInventory(cows, chickens, pigs) {
+//   console.log(zeroPad(cows, 3) + " Коров");
+//   console.log(zeroPad(chickens, 3) + " Куриц");
+//   console.log(zeroPad(pigs, 3) + " Свиней");
+// }
+// printFarmInventory(7, 16, 3);
+
+//==========================================================
+
+// let pow = (a, b) => {
+//   if (a > b) return b;
+//   else return a;
+// };
+
+// console.log(pow(566, 177));
+
+//==========================================================
+
+// let isEven = (x) => {
+//   if (x === 0) return true;
+//   else if (x === 1) return false;
+//   else if (x < 0) return isEven(-x);
+//   else return isEven(x - 2);
+// };
+// console.log(isEven(0));
+
+//==========================================================
+
+function countChar(str, ch) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == ch) {
+      count += 1;
+    }
+  }
+  return count;
 }
-// вывестиИнвентаризациюФермы
-function printFarmInventory(cows, chickens, pigs) {
-  console.log(zeroPad(cows, 3) + " Коров");
-  console.log(zeroPad(chickens, 3) + " Куриц");
-  console.log(zeroPad(pigs, 3) + " Свиней");
+
+function countBs(str) {
+  return countChar(str, "s");
 }
-printFarmInventory(7, 16, 3);
+
+console.log(countBs("asdfsdfsdfw"));
