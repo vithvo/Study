@@ -306,4 +306,70 @@
 // }
 // addEntry(true, "работа", "тронул дерево", "пицца", "пробежка", "телевизор");
 
+// function randomPointOnCircle(radius) {
+//   var angle = Math.random() * 2 * Math.PI;
+//   return { x: radius * Math.cos(angle), y: radius * Math.sin(angle) };
+// }
+// console.log(randomPointOnCircle(2));
+// console.log(Math.random());
+// console.log(Math.random());
+// console.log(Math.floor(Math.random() * 100));
 
+//====================================================================
+
+range = (a, b, step = a < b ? 1 : -1) => {
+  mass = [];
+  if (step > 0) {
+    for (let i = a; i <= b; i += step) {
+      mass.push(i);
+    }
+  } else {
+    for (let i = a; i >= b; i += step) {
+      mass.push(i);
+    }
+  }
+  return mass;
+};
+
+array = range(10, 1);
+console.log(array);
+
+function sum(mass) {
+  let total = 0;
+  for (let value of mass) {
+    total += value;
+  }
+  return total;
+}
+
+console.log(sum(range(1, 10, 1)));
+
+//====================================================================
+
+reverseArray = (q) => {
+  yarra = [];
+  for (let i = q.length - 1; i >= 0; i--) {
+    yarra.push(q[i]);
+  }
+  return yarra;
+};
+
+reverseArrayInPlace = (q) => {
+  for (let i = 0; i < Math.floor(q.length / 2); i++) {
+    let old = q[i];
+    q[i] = q[q.length - 1 - i];
+    q[q.length - 1 - i] = old;
+  }
+  return array;
+};
+
+newArray = reverseArray(array);
+console.log(newArray);
+console.log(reverseArray(array) == newArray);
+console.log(reverseArray(["A", "B", "C"]));
+
+reverseArrayInPlace(array);
+console.log(array);
+
+console.log(array == reverseArrayInPlace(array));
+// → [5, 4, 3, 2, 1]
