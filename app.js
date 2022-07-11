@@ -65,16 +65,59 @@
 
 // console.log(Object.getPrototypeOf(weirdRabbit) == Rabbit.prototype);
 
-class Rabbit {
-  constructor(type) {
-    this.type = type;
+// class Rabbit {
+//   constructor(type) {
+//     this.type = type;
+//   }
+//   speak(line) {
+//     console.log(`${this.type} кролик говорит: '${line}'`);
+//   }
+// }
+// let killerRabbit = new Rabbit("Убийственный");
+// let blackRabbit = new Rabbit("Черный");
+
+// console.log(killerRabbit);
+// console.log(blackRabbit);
+
+// Rabbit.prototype.teeth = "маленькие";
+// console.log(killerRabbit.teeth);
+
+// killerRabbit.teeth = "длинные, острые и кровавые";
+// console.log(killerRabbit.teeth);
+
+// console.log(blackRabbit.teeth);
+
+// console.log(Rabbit.prototype.teeth);
+
+// Rabbit.prototype.toString = function () {
+//   return `${this.type} кролик`;
+// };
+// console.log(String(blackRabbit));
+
+class Matrix {
+  constructor(width, height, element = (х, у) => undefined) {
+    this.width = width;
+    this.height = height;
+    this.content = [];
+
+    for (let у = 0; у < height; у++) {
+      for (let х = 0; х < width; х++) {
+        this.content[y * width + х] = element(x, у);
+      }
+    }
   }
-  speak(line) {
-    console.log(`${this.type} кролик говорит: '${line}'`);
+  get(x, у) {
+    return this.content[y * this.width + х];
+  }
+  set(x, у, value) {
+    this.content[y * this.width + х] = value;
   }
 }
-let killerRabbit = new Rabbit("Убийственный");
-let blackRabbit = new Rabbit("Черный");
+// get(x, у) {
+// return this.content[y * this.width + х];
+// }
 
-console.log(killerRabbit);
-console.log(blackRabbit);
+// set(x, у, value) {
+// this.content[y * this.width + х] value;
+// }
+// }
