@@ -31,20 +31,50 @@
 
 // console.log(empty.toString());
 
-let protoRabbit = {
+// let protoRabbit = {
+//   speak(line) {
+//     console.log(`${this.type} кролик говорит: '${line}'`);
+//   },
+// };
+// let killerRabbit = Object.create(protoRabbit);
+// killerRabbit.type = "Боевой";
+// killerRabbit.speak("nИФ-nAФ!");
+
+// function makeRabbit(type) {
+//   let rabbit = Object.create(protoRabbit);
+//   rabbit.type = type;
+//   return rabbit;
+// }
+
+// let alone = makeRabbit("Одинокий");
+// console.log(alone);
+
+// function Rabbit(type) {
+//   this.type = type;
+// }
+// Rabbit.prototype.speak = function (line) {
+//   console.log(`The ${this.type} кролик говорит: '${line}'`);
+// };
+// let weirdRabbit = new Rabbit("Странный");
+// let dissatisfiedRabbit = new Rabbit("Недоволbный");
+
+// console.log(weirdRabbit);
+// console.log(dissatisfiedRabbit);
+
+// console.log(Object.getPrototypeOf(Rabbit) == Function.prototype);
+
+// console.log(Object.getPrototypeOf(weirdRabbit) == Rabbit.prototype);
+
+class Rabbit {
+  constructor(type) {
+    this.type = type;
+  }
   speak(line) {
     console.log(`${this.type} кролик говорит: '${line}'`);
-  },
-};
-let killerRabbit = Object.create(protoRabbit);
-killerRabbit.type = "Боевой";
-killerRabbit.speak("nИФ-nAФ!");
-
-function makeRabbit(type) {
-  let rabbit = Object.create(protoRabbit);
-  rabbit.type = type;
-  return rabbit;
+  }
 }
+let killerRabbit = new Rabbit("Убийственный");
+let blackRabbit = new Rabbit("Черный");
 
-let alone = makeRabbit("Одинокий");
-console.log(alone);
+console.log(killerRabbit);
+console.log(blackRabbit);
