@@ -101,67 +101,112 @@
 
 // console.log(ages);
 
-class Matrix {
-  constructor(width, height, element = (x, y) => undefined) {
-    this.width = width;
-    this.height = height;
-    this.content = [];
+// class Matrix {
+//   constructor(width, height, element = (x, y) => undefined) {
+//     this.width = width;
+//     this.height = height;
+//     this.content = [];
 
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        this.content[y * width + x] = element(x, y);
-      }
-    }
+//     for (let y = 0; y < height; y++) {
+//       for (let x = 0; x < width; x++) {
+//         this.content[y * width + x] = element(x, y);
+//       }
+//     }
+//   }
+//   get(x, y) {
+//     return this.content[y * this.width + x];
+//   }
+//   set(x, y, value) {
+//     this.content[y * this.width + x] = value;
+//   }
+// }
+
+// class Matrixiterator {
+//   constructor(matrix) {
+//     this.x = 0;
+
+//     this.y = 0;
+//     this.matrix = matrix;
+//   }
+//   next() {
+//     if (this.y == this.matrix.height) return { done: true };
+//     let value = {
+//       x: this.x,
+//       y: this.y,
+//       value: this.matrix.get(this.x, this.y),
+//     };
+//     this.x++;
+//     if (this.x == this.matrix.width) {
+//       this.x = 0;
+//       this.y++;
+//     }
+//     return { value, done: false };
+//   }
+// }
+
+// Matrix.prototype[Symbol.iterator] = function () {
+//   return new Matrixiterator(this);
+// };
+
+// class SymmetricMatrix extends Matrix {
+//   constructor(size, element = (x, y) => undefined) {
+//     super(size, size, (x, y) => {
+//       if (x < y) return element(y, x);
+//       else return element(x, y);
+//     });
+//   }
+
+//   set(x, y, value) {
+//     super.set(x, y, value);
+//     if (x != y) {
+//       super.set(y, x, value);
+//     }
+//   }
+// }
+// let matrix = new SymmetricMatrix(2, (x, y) => `${x},${y}`);
+// console.log(matrix);
+
+// class Temperature {
+//   constructor(celsius) {
+//     this.celsius = celsius;
+//   }
+//   get fahrenheit() {
+//     return this.celsius * 1.8 + 32;
+//   }
+//   set fahrenheit(value) {
+//     this.celsius = (value - 32) / 1.8;
+//   }
+
+//   static fromFahrenheit(value) {
+//     return new Temperature((value - 32) / 1.8);
+//   }
+// }
+// let temp = new Temperature(22);
+// console.log(temp);
+
+// ======================================================================
+
+class Vec {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
   }
-  get(x, y) {
-    return this.content[y * this.width + x];
+
+  plus(other) {
+    return new Vec(this.x + other.x, this.y + other.y);
   }
-  set(x, y, value) {
-    this.content[y * this.width + x] = value;
+
+  minus(other) {
+    return new Vec(this.x - other.x, this.y - other.y);
+  }
+
+  get length() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
   }
 }
 
-class Matrixiterator {
-  constructor(matrix) {
-    this.x = 0;
+let vec = new Vec(2, 3);
+console.log(vec);
 
-    this.y = 0;
-    this.matrix = matrix;
-  }
-  next() {
-    if (this.y == this.matrix.height) return { done: true };
-    let value = {
-      x: this.x,
-      y: this.y,
-      value: this.matrix.get(this.x, this.y),
-    };
-    this.x++;
-    if (this.x == this.matrix.width) {
-      this.x = 0;
-      this.y++;
-    }
-    return { value, done: false };
-  }
-}
-
-Matrix.prototype[Symbol.iterator] = function () {
-  return new Matrixiterator(this);
-};
-
-class SymmetricMatrix extends Matrix {
-  constructor(size, element = (x, y) => undefined) {
-    super(size, size, (x, y) => {
-      if (x < y) return element(y, x);
-      else return element(x, y);
-    });
-  }
-
-  set(x, y, value) {
-    super.set(x, y, value);
-    if (x != y) {
-      super.set(y, x, value);
-    }
-  }
-}
-let matrix = new SymmetricMatrix(7, (x, y) => `${x},${y}`);
-console.log(matrix.get(5, 2));
+console.log(new Vec(1, 2).minus(new Vec(2, 3)));
+console.log(new Vec(3, 4).length);
