@@ -4,9 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #progress {
+        border-bottom: 5px solid blue;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      /* body {
+				display: flex;
+				flex-wrap: wrap;
+			} */
+    </style>
+    <!-- <style>
+      body {
+        height: 200px;
+
+        background: beige;
+      }
+      .dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 4px; /* скругленные углы */
+        background: blueviolet;
+        position: absolute;
+        z-index: 1000;
+      }
+    </style> -->
     <title>Document</title>
   </head>
   <body>
+    <!-- <p>Перетащите полоску, чтобы изменить ее ширину:</p>
+    <div style="background: orange; width: 60px; height: 20px"></div> -->
+    <div id="progress"></div>
     <!-- <p>
       Знaй, что, eсли ты отnnaвишься в nогоню зa
       <span class="animal"> бeлым кnоликом, </span>
@@ -20,7 +52,7 @@
     </p>
     <p>nоэвaлa тeбя</p> -->
 
-    <p style="text-align: center">
+    <!-- <p style="text-align: center">
       <img
         id="cat"
         src="./Work1.jpg"
@@ -28,9 +60,9 @@
         width="100px"
       />
       <img id="hat" src="./Post.jpg" style="position: relative" width="100px" />
-    </p>
+    </p> -->
 
-    <div id="mountains"></div>
+    <!-- <div id="mountains"></div> -->
     <script src="app.js"></script>
   </body>
 </html>
